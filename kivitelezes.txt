@@ -1,0 +1,28 @@
+Listazo fuggveny:
+    - kap 4 stringet amik a menupontokat hatarozzak meg (ha kevesebb akkor sem baj)
+
+Bevetel/Kkiadas:
+    - charban megkapja hogy épp melyiket kell csinálnia -> switch
+
+Befektetesek:
+    - pillanatnyi ar (vagy user bevitel vagy API!)
+    - charban megkapja, a befektetes tipusat -> switch
+
+Statisztika:
+    - előre deklarált 2 tömböt(adatok, intervallum) vesz át => majd kilistázza
+    - diagrammot csinal (1 karakter 1 egyseg)
+
+Teendo hozzaadasa:
+    - szimplan adatbazisba egy uj sort felvisz
+
+Teendo listazasa:
+    - Fájlból beolvas
+
+Meditációs app:
+    - játék a számokkal
+
+Könyvek hozzaadasa:
+    - szimplan adatbazisba egy uj sort felvisz
+
+Könyvek kilistázása:
+    - Fájlból beolvas
