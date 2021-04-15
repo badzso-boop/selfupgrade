@@ -1,0 +1,30 @@
+"Adatbázis terv"
+
+pénzügyek
+
+kereset
+-----------------------------------------
+cimszo - string
+tipus  - char => b(bevétel)/k(kiadás)
+osszeg - int
+date   - string
+=========================================
+befektetes
+-----------------------------------------
+tipus         - char
+pillanatnyiAr - int
+birtokoltAr   - int
+date          - int
+=========================================
+teendo
+-----------------------------------------
+cimszo   - string
+date     - int
+hatarido - int
+=========================================
+konyvek
+-----------------------------------------
+cim    - string
+szerzo - string
+date   - int
+
