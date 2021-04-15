@@ -1,0 +1,30 @@
+Önfejlesztő alkalmazás
+
+Az alkalmazás menüvel működik és a pénzügyek kezelése valamint a teendő listába egy másik menü lenne. Az összes adatot külön fájlokban tárolná az adatokat tabulátorral elválasztva és a külön adatokat új sorba írnám. 
+
+	- pénzügyek kezelése
+		- bevétel / kiadás
+			- összeg
+			- bevétel -> honnan / kiadás -> mire
+			- dátum mikor
+		- befektetések kezelése
+			- kriptovaluta / részvény pillanatnyi ára
+			- Birtokolt kriptovaluta / részvény értéke
+			- dátum
+		- statisztika felállítása
+			- napi, heti, havi növekedés/csökkenés
+	- teendő lista 
+		- teendők hozzádása
+			- teendo
+			- dátum (automatán)
+			- határidő
+		- teendők kilistázása
+	- meditáció app
+	- milyen könyvekett olvasott eddig a felhasználó
+		- könyvek bekérése
+			- cím
+			- szerző
+			- olvasás dátuma
+		- olvasott könyvek kilistázása
+			
+			
