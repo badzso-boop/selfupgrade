@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
 
@@ -380,9 +376,31 @@ namespace ConsoleApp1
         //Mennyit fektetett be, hova, mikor
         static void befektetesekHozzaadasa()
         {
+            int n = File.ReadAllLines("befektetesek.txt").Length - 1;
+            string[] segedBeolvas = new string[n];
+
+            FileStream f = new FileStream("befektetesek.txt", FileMode.Open);
+            StreamReader sr2 = new StreamReader(f);
+
+            string fejlec = sr2.ReadLine();
+            for (int a = 0; a < n; a++)
+            {
+                segedBeolvas = sr2.ReadLine().Split('|');
+                befektetes[a].nev = segedBeolvas[0];
+                befektetes[a].Oertek = int.Parse(segedBeolvas[1]);
+                befektetes[a].Bertek = int.Parse(segedBeolvas[2]);
+                befektetes[a].date = segedBeolvas[3];
+            }
+            sr2.Close();
+            f.Close();
+
             int i = 0;
 
-            Console.Write("Vége -> *");
+            Console.Write("Vége -> * \t");
+            for (int d = 0; d < n; d++)
+            {
+                Console.Write($"{d+1}. {befektetes[d].nev},");
+            }
             Console.SetCursorPosition(5, 3);
             Console.Write("Kérem adja meg az elem címszavát: ");
             befektetes[i].nev = Console.ReadLine();
@@ -448,7 +466,7 @@ namespace ConsoleApp1
             Console.WriteLine("Listázáshoz kérem válasszon a menüpontokból");
 
             int n = File.ReadAllLines("befektetesek.txt").Length-1;
-            string[] seged = new string[6];
+            string[] seged = new string[n];
 
             FileStream f = new FileStream("befektetesek.txt", FileMode.Open);
             StreamReader sr = new StreamReader(f);
@@ -465,14 +483,57 @@ namespace ConsoleApp1
             sr.Close();
             f.Close();
 
+            seged = new string[n];
+            
             for (int i = 0; i < n; i++)
             {
-                if (befektetes[i].nev == befektetes[i+1].nev)
+                seged[i] = befektetes[i].nev;
+            }
+
+            Array.Sort(seged);
+            
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
+            }
+
+            Console.Write("Kérem adja meg melyiket szeretné részletesen megnézni:");
+            string valasztas = Console.ReadLine();
+
+            double[] novekedes = new double[n];
+
+            Console.Clear();
+            for (int i = 0; i < n; i++)
+            {
+                if (befektetes[i].nev == valasztas)
                 {
-
+                    Console.WriteLine($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
+                    for (int j = i+1; j < n; j++)
+                    {
+                        if (befektetes[j].nev == valasztas)
+                        {
+                            novekedes[i] = befektetes[i].Bertek - befektetes[j].Bertek;
+                            break;
+                        }
+                    }
                 }
+            }
 
-                Console.WriteLine($"{i+1}. {befektetes[i].nev}");
+            Console.WriteLine();
+            for (int i = 0; i < n-1; i++)
+            {
+                if (befektetes[i].nev == valasztas)
+                {
+                    Console.Write($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date} \t");
+                    if (novekedes[i] * -1 < 0)
+                    {
+                        Console.WriteLine(novekedes[i] + "%-os csökkenése van");
+                    }
+                    else
+                    {
+                        Console.WriteLine(novekedes[i] * -1 + "%-os növekedése van");
+                    }
+                }
             }
         }
 
