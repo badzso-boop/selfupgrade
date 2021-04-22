@@ -1,3 +1,6 @@
 cimszo	|tipus	|osszeg	|date
 bevasarlas|k|5000|2021. 04. 15. 9:59:41
 Bevasarlas|k|6000|2021. 04. 15. 11:28:17
+szusi|k|1000|2021. 04. 16. 17:36:36
+Bevasarlas kocsiba|k|2000|2021. 04. 21. 9:32:50
+ASDASD|k|69420|2021. 04. 22. 17:49:03

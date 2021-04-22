@@ -23,9 +23,28 @@ namespace ConsoleApp1
             public string date;
         }
 
+        //teendo kezelesehez
+        public struct adat3
+        {
+            public string cim;
+            public string todo;
+            public string date;
+            public string hatar;
+        }
+
+        public struct adat4
+        {
+            public string szerzo;
+            public string cim;
+            public int oldal;
+            public string date;
+        }
+
         static adat1[] bevetel = new adat1[150];
         static adat1[] kiadas = new adat1[150];
         static adat2[] befektetes = new adat2[150];
+        static adat3[] teendo = new adat3[150];
+        static adat4[] konyv = new adat4[150];
 
         static string[] date = DateTime.Today.ToString().Split('.');
 
@@ -494,9 +513,10 @@ namespace ConsoleApp1
             
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
+                Console.WriteLine($"   - {befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
             }
 
+            Console.WriteLine();
             Console.Write("Kérem adja meg melyiket szeretné részletesen megnézni:");
             string valasztas = Console.ReadLine();
 
@@ -507,7 +527,7 @@ namespace ConsoleApp1
             {
                 if (befektetes[i].nev == valasztas)
                 {
-                    Console.WriteLine($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
+                    //Console.WriteLine($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date}");
                     for (int j = i+1; j < n; j++)
                     {
                         if (befektetes[j].nev == valasztas)
@@ -519,7 +539,6 @@ namespace ConsoleApp1
                 }
             }
 
-            Console.WriteLine();
             for (int i = 0; i < n-1; i++)
             {
                 if (befektetes[i].nev == valasztas)
@@ -527,14 +546,110 @@ namespace ConsoleApp1
                     Console.Write($"{befektetes[i].nev} \t {befektetes[i].Oertek} \t {befektetes[i].Bertek} \t {befektetes[i].date} \t");
                     if (novekedes[i] * -1 < 0)
                     {
-                        Console.WriteLine(novekedes[i] + "%-os csökkenése van");
+                        Console.WriteLine(novekedes[i] + "$ csökkenése van");
                     }
                     else
                     {
-                        Console.WriteLine(novekedes[i] * -1 + "%-os növekedése van");
+                        Console.WriteLine(novekedes[i] * -1 + "$ növekedése van");
                     }
                 }
             }
+
+            Console.ReadKey();
+            Console.Clear();
+            menuszam = menu("1. Pénzügy", "2. Teendők", "3. Olvasott könyvek", "4. Meditáció");
+            menuDontes(ref menuszam);
+        }
+
+        static void levego()
+        {
+            Console.WriteLine("Levegő be");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő be.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő be..");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő be...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő be....");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő be.....");
+
+            Console.WriteLine();
+            Thread.Sleep(500);
+
+            Console.WriteLine("Bent tart");
+            Thread.Sleep(1000);
+            Console.WriteLine("Bent tart.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Bent tart..");
+            Thread.Sleep(1000);
+            Console.WriteLine("Bent tart...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Bent tart....");
+            Thread.Sleep(1000);
+            Console.WriteLine("Bent tart.....");
+
+            Console.WriteLine();
+            Thread.Sleep(500);
+
+            Console.WriteLine("Levegő ki");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő ki.");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő ki..");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő ki...");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő ki....");
+            Thread.Sleep(1000);
+            Console.WriteLine("Levegő ki.....");
+        }
+
+        static void mozgas()
+        {
+            Console.Clear();
+            Console.WriteLine("Kérem álljon fel!");
+            Thread.Sleep(5000);
+            Console.WriteLine("Kérem emelje fel mind a 2 kezét a feje fölé!");
+            Thread.Sleep(2000);
+            Console.WriteLine("Kérem nyújtózkodjon minnél magasabbra a kezeviel felváltva!");
+            Thread.Sleep(5000);
+            Console.WriteLine("Kérem vegyen egy mély levegőt!");
+            Thread.Sleep(4000);
+            Console.WriteLine("Kérem fújja ki a levegőt!");
+            Thread.Sleep(4000);
+            Console.WriteLine("Kérem hajoljon előre és érintse meg a bokáját tartsa ott 3mp-ig majd egyenesedjen ki!");
+            Thread.Sleep(10000);
+            Console.WriteLine("Kérem emelje fel a jobb lábát és húzza oda a mellkasához!");
+            Thread.Sleep(10000);
+            Console.WriteLine("Kérem emelje fel a bal lábát és húzza oda a mellkasához!");
+            Thread.Sleep(10000);
+            Console.WriteLine("Kérem végezzen törzskörzést");
+            Thread.Sleep(8000);
+            Console.WriteLine("Kérem végezzen fejkörzést!");
+            Thread.Sleep(8000);
+            Console.WriteLine("Meg is volnánk! :D");
+        }
+
+        static void meditacio()
+        {
+            Console.SetCursorPosition(25, 0);
+            Console.WriteLine("Üdvözlöm a meditáció csodálatos világában! :D");
+            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("Kérem fújja ki az összes levegőt majd nyomjon meg egy gombot ha készen áll a pihenésre!");
+            Console.ReadKey();
+
+            for (int i = 0; i < 6; i++)
+            {
+                Console.Clear();
+                levego();
+                Thread.Sleep(1000);
+            }
+            Console.WriteLine("Kérem nyomjon meg egy gombot ha készen áll egy kis tesmozgásra :D");
+            Console.ReadKey();
+
+            mozgas();
         }
 
         //befektetések menü
@@ -593,6 +708,124 @@ namespace ConsoleApp1
             }
         }
 
+        //Teendő hozzáadása
+        static void todoSave()
+        {
+            n = 0;
+            int i = 0;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Kilépés -> *");
+            Console.ResetColor();
+            Console.SetCursorPosition(5, 2);
+
+            Console.Write("Kérem adja meg a teendő címét: ");
+            teendo[i].cim = Console.ReadLine();
+            while (teendo[i].cim != "*")
+            {
+                Console.SetCursorPosition(5, 4);
+                Console.Write("Kérem adja meg a teendőt(egy sorba, vesszővel elválasztva): ");
+                teendo[i].todo = Console.ReadLine();
+
+                Console.SetCursorPosition(5, 6);
+                Console.Write("Kérem adja meg a teendő határidejét (éééé.hh.nn-óó:pp): ");
+                teendo[i].hatar = Console.ReadLine();
+
+                teendo[i].date = DateTime.Now.ToString();
+                mentes();
+                i++;
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Kilépés -> *");
+                Console.ResetColor();
+                Console.SetCursorPosition(5, 2);
+                Console.Write("Kérem adja meg a teendő címét: ");
+                teendo[i].cim = Console.ReadLine();
+
+            }
+            Console.Clear();
+            n = i;
+
+
+            //eddigi sorok beolvasása
+            int length1 = File.ReadAllLines("todo.txt").Length;
+            string[] seged = new string[length1];
+            FileStream f1 = new FileStream("todo.txt", FileMode.Open);
+            StreamReader sr1 = new StreamReader(f1);
+
+            seged[0] = sr1.ReadLine();
+            for (int j = 1; j < length1; j++)
+            {
+                seged[j] = sr1.ReadLine();
+            }
+            sr1.Close();
+            f1.Close();
+
+            FileStream f2 = new FileStream("todo.txt", FileMode.Create);
+            StreamWriter sw1 = new StreamWriter(f2);
+
+            //eddigi sorok kiírása
+            for (int g = 0; g < length1; g++)
+            {
+                sw1.WriteLine(seged[g]);
+            }
+
+            //újjonnan hozzáadott sorok kiírása
+            for (int j = 0; j < n; j++)
+            {
+                sw1.WriteLine($"{teendo[j].cim}|{teendo[j].todo}|{teendo[j].hatar}|{teendo[j].date}");
+            }
+            sw1.Close();
+            f2.Close();
+
+            mentes();
+            menuszam = menu("1. Pénzügy", "2. Teendők", "3. Olvasott könyvek", "4. Meditáció");
+            menuDontes(ref menuszam);
+        }
+
+        //Teendő listázása
+        static void todoList()
+        {
+            //nullázás
+            teendo = new adat3[150];
+            int length = File.ReadAllLines("todo.txt").Length-1;
+            
+            FileStream f1 = new FileStream("todo.txt", FileMode.Open);
+            StreamReader sr1 = new StreamReader(f1);
+
+            string fejlec = sr1.ReadLine();
+            for (int i = 0; i < length; i++)
+            {
+                string[] seged = sr1.ReadLine().Split('|');
+                teendo[i].cim = seged[0];
+                teendo[i].todo = seged[1];
+                teendo[i].hatar = seged[2];
+                teendo[i].date = seged[3];
+            }
+            sr1.Close();
+            f1.Close();
+            Random r = new Random();
+            for (int i = 0; i < length; i++)
+            {
+                string[] todos = teendo[i].todo.Split(',');
+                Console.ForegroundColor = (ConsoleColor)r.Next((int)ConsoleColor.Blue, (int)ConsoleColor.White);
+                Console.WriteLine($"{teendo[i].cim}");
+                Console.ResetColor();
+                for (int j = 0; j < todos.Length; j++)
+                {
+                    Console.WriteLine(j+1 + ". " +  todos[j]);
+                }
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Határidő: {teendo[i].hatar} \t Hozzáadva: {teendo[i].date}");
+                Console.ResetColor();
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+            menuszam = menu("1. Pénzügy", "2. Teendők", "3. Olvasott könyvek", "4. Meditáció");
+            menuDontes(ref menuszam);
+        }
+
         //Teendők menü
         static void teendokMenu()
         {
@@ -601,11 +834,11 @@ namespace ConsoleApp1
             {
                 case 1: //1-es menüpont
                     Console.Clear();
-                    Console.WriteLine("Teendő hozzáadása");
+                    todoSave();
                     break;
                 case 2: //2-es menüpont
                     Console.Clear();
-                    Console.WriteLine("Teendő Listázása");
+                    todoList();
                     break;
                 case 5: // Vissza
                     Console.Clear();
@@ -617,6 +850,161 @@ namespace ConsoleApp1
             }
         }
 
+        //könyvek hozzáadása
+        static void konyAdd()
+        {
+            n = 0;
+            int i = 0;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Kilépés -> *");
+            Console.ResetColor();
+            Console.SetCursorPosition(5, 2);
+
+            Console.Write("Kérem adja meg a könyv címét: ");
+            konyv[i].cim = Console.ReadLine();
+            while (konyv[i].cim != "*")
+            {
+                Console.SetCursorPosition(5, 4);
+                Console.Write($"Kérem adja meg a {konyv[i].cim} szerzőjét: ");
+                konyv[i].szerzo = Console.ReadLine();
+
+                Console.SetCursorPosition(5, 6);
+                Console.Write($"Kérem adja meg a {konyv[i].cim} oldalszámát: ");
+                konyv[i].oldal = int.Parse(Console.ReadLine());
+
+                konyv[i].date = DateTime.Now.ToString();
+                mentes();
+                i++;
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Kilépés -> *");
+                Console.ResetColor();
+                Console.SetCursorPosition(5, 2);
+                Console.Write("Kérem adja meg a könyv címét: ");
+                konyv[i].cim = Console.ReadLine();
+
+            }
+            Console.Clear();
+            n = i;
+
+
+            //eddigi sorok beolvasása
+            int length1 = File.ReadAllLines("konyv.txt").Length;
+            string[] seged = new string[length1];
+            FileStream f1 = new FileStream("konyv.txt", FileMode.Open);
+            StreamReader sr1 = new StreamReader(f1);
+
+            seged[0] = sr1.ReadLine();
+            for (int j = 1; j < length1; j++)
+            {
+                seged[j] = sr1.ReadLine();
+            }
+            sr1.Close();
+            f1.Close();
+
+            FileStream f2 = new FileStream("konyv.txt", FileMode.Create);
+            StreamWriter sw1 = new StreamWriter(f2);
+
+            //eddigi sorok kiírása
+            for (int g = 0; g < length1; g++)
+            {
+                sw1.WriteLine(seged[g]);
+            }
+
+            //újjonnan hozzáadott sorok kiírása
+            for (int j = 0; j < n; j++)
+            {
+                sw1.WriteLine($"{konyv[j].cim}|{konyv[j].szerzo}|{konyv[j].oldal}|{konyv[j].date}");
+            }
+            sw1.Close();
+            f2.Close();
+
+            mentes();
+            menuszam = menu("1. Pénzügy", "2. Teendők", "3. Olvasott könyvek", "4. Meditáció");
+            menuDontes(ref menuszam);
+        }
+
+        //könyvek kilistázása
+        static void konyvList()
+        {
+            //nullázás
+            konyv = new adat4[150];
+            int length = File.ReadAllLines("konyv.txt").Length - 1;
+            FileStream f1 = new FileStream("konyv.txt", FileMode.Open);
+            StreamReader sr1 = new StreamReader(f1);
+
+            string fejlec = sr1.ReadLine();
+            for (int i = 0; i < length; i++)
+            {
+                string[] seged = sr1.ReadLine().Split('|');
+                konyv[i].cim = seged[0];
+                konyv[i].szerzo = seged[1];
+                konyv[i].oldal = int.Parse(seged[2]);
+                konyv[i].date = seged[3];
+            }
+            sr1.Close();
+            f1.Close();
+            Random r = new Random();
+
+            Console.WriteLine("Összes könyv");
+            Console.WriteLine();
+            for (int i = 0; i < length; i++)
+            {
+                Console.ForegroundColor = (ConsoleColor)r.Next((int)ConsoleColor.Blue, (int)ConsoleColor.White);
+                Console.WriteLine($"Cím: {konyv[i].cim}");
+                Console.ResetColor();
+                Console.WriteLine($"Szerző: {konyv[i].szerzo}");
+                Console.WriteLine($"Oldalszám: {konyv[i].oldal}");
+                Console.WriteLine($"Olvasás dátuma: {konyv[i].date}");
+                Console.WriteLine();
+            }
+
+            adat4 seged2 = new adat4();
+
+            //könyvek oldalszám szerinti listázása
+            for (int i = length-1; i > 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (konyv[j].oldal > konyv[j+1].oldal)
+                    {
+                        seged2 = konyv[j + 1];
+                        konyv[j + 1] = konyv[j];
+                        konyv[j] = seged2;
+                    }
+                }
+            }
+
+
+            Console.WriteLine();
+            int sor = 0;
+            Console.SetCursorPosition(50, sor);
+            Console.WriteLine("Könyvek oldalszám szerint listázva");
+            for (int i = 0; i < length; i++)
+            {
+                Console.ForegroundColor = (ConsoleColor)r.Next((int)ConsoleColor.Blue, (int)ConsoleColor.White);
+                sor += 2;
+                Console.SetCursorPosition(50, sor);
+                Console.WriteLine($"Cím: {konyv[i].cim}");
+                Console.ResetColor();
+                sor++;
+                Console.SetCursorPosition(50, sor);
+                Console.WriteLine($"Szerző: {konyv[i].szerzo}");
+                sor++;
+                Console.SetCursorPosition(50, sor);
+                Console.WriteLine($"Oldalszám: {konyv[i].oldal}");
+                sor++;
+                Console.SetCursorPosition(50, sor);
+                Console.WriteLine($"Olvasás dátuma: {konyv[i].date}");
+                Console.WriteLine();
+            }
+
+            Console.ReadKey();
+            Console.Clear();
+            menuszam = menu("1. Pénzügy", "2. Teendők", "3. Olvasott könyvek", "4. Meditáció");
+            menuDontes(ref menuszam);
+        }
+
         //könyvek menü
         static void konyvMenu()
         {
@@ -625,11 +1013,11 @@ namespace ConsoleApp1
             {
                 case 1: //1-es menüpont
                     Console.Clear();
-                    Console.WriteLine("Olvasott könyv hozzáadása");
+                    konyAdd();
                     break;
                 case 2: //2-es menüpont
                     Console.Clear();
-                    Console.WriteLine("Olvasott könyvek Listázása");
+                    konyvList();
                     break;
                 case 5: // Vissza
                     Console.Clear();
@@ -660,7 +1048,7 @@ namespace ConsoleApp1
                     break;
                 case 4:
                     Console.Clear();
-                    Console.WriteLine("meditáció");
+                    meditacio();
                     break;
                 case 5:
                     Console.Clear();
